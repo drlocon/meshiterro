@@ -1,6 +1,4 @@
-# コントローラ作成時に名前を間違えた為、PostCommnetsControllerになっている
-class PostCommnetsController < ApplicationController
-
+class PostCommentsController < ApplicationController
   def create
     post_image = PostImage.find(params[:post_image_id])
     comment = current_user.post_comments.new(post_comment_params)
@@ -10,7 +8,7 @@ class PostCommnetsController < ApplicationController
   end
   
   def destroy
-    PostCommnet.find(params[:id]).destroy
+    PostComment.find(params[:id]).destroy
     redirect_to post_image_path(params[:post_image_id])
   end
 
@@ -19,5 +17,4 @@ class PostCommnetsController < ApplicationController
   def post_comment_params
     params.require(:post_comment).permit(:comment)
   end
-
 end
